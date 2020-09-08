@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <pthread.h>
+int arr[8],n,i;
+
+void *th()
+{
+     int sum=0;
+     printf("Enter the length of the array and then the numbers:=");
+     scanf("%d",&n);
+     for(i=0; i<n; i++)
+     {
+         scanf("%d", &arr[i]);
+     }
+     for(i=0; i<n; i++)
+         {
+             sum = sum + arr[i];
+         }
+     printf("The sum of all values is:%d ", sum);
+}
+
+void *th1()
+{
+     int pro =1;
+     for(int i=0; i<n; i++)
+         pro = pro *arr[i];
+
+     printf("The product of all values is: %d ", pro);
+}
+
+int main()
+{
+int n,i;
+pthread_t t1;
+pthread_t t2;
+     n=pthread_create(&t1,NULL,&th,NULL);
+     pthread_join(t1,NULL);
+
+     n=pthread_create(&t2,NULL,&th1,NULL);
+     pthread_join(t2,NULL);
+}
