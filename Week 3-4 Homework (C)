@@ -22,7 +22,7 @@ void *th1()
 {
      int pro =1;
      for(int i=0; i<n; i++)
-         pro = pro *arr[i];
+         pro = pro * arr[i];
 
      printf("The product of all values is: %d ", pro);
 }
